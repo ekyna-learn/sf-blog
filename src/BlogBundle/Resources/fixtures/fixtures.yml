@@ -1,0 +1,20 @@
+BlogBundle\Entity\Category:
+    category{1..5}:
+        title: <customTitle(2, true)>
+        description: <text()>
+
+BlogBundle\Entity\Post:
+    post{1..50}:
+        category: @category*
+        title: <customTitle(6, true)>
+        author: <name()>
+        content: <customContent()>
+        publishedAt: <dateTimeBetween('-200 days', 'now')>
+
+BlogBundle\Entity\Comment:
+    comment{1..80}:
+        post: @post*
+        pseudo: <firstName()> <lastName()>
+        message: <customMessage()>
+        createdAt: <dateTimeBetween('-200 days', 'now')>
+        validated: <boolean(90)>

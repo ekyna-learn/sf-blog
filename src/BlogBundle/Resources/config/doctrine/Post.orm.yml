@@ -1,0 +1,41 @@
+BlogBundle\Entity\Post:
+    type: entity
+    table: blog_post
+    repositoryClass: BlogBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            unique: true
+        author:
+            type: string
+            length: 64
+        content:
+            type: text
+        publishedAt:
+            type: datetime
+        slug:
+            type: string
+            length: 255
+            unique: true
+    manyToOne:
+        category:
+            targetEntity: BlogBundle\Entity\Category
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    manyToOne:
+        category:
+            targetEntity: BlogBundle:Category
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    lifecycleCallbacks:
+        prePersist: [onPrePersist]
+        preUpdate: [onPreUpdate]

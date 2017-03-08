@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="/favicon.ico">
+
+    <title>{% block title 'Blog' %}</title>
+
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/blog/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/blog/css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+    {% endblock stylesheets %}
+
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/blog/js/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('bundles/blog/js/respond.min.js') }}"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    {% include "BlogBundle:Layout:navbar.html.twig" %}
+    {% include "BlogBundle:Layout:flashes.html.twig" %}
+
+    {% block content %}{% endblock %}
+
+    {% block javascripts %}
+        <script src="{{ asset('bundles/blog/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/blog/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/blog/js/ie10-viewport-bug-workaround.js') }}"></script>
+    {% endblock javascripts %}
+
+</body>
+</html>

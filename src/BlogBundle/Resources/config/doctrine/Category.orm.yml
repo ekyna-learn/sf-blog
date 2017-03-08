@@ -1,0 +1,24 @@
+BlogBundle\Entity\Category:
+    type: entity
+    table: blog_category
+    repositoryClass: BlogBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            unique: true
+        description:
+            type: text
+        slug:
+            type: string
+            length: 255
+            unique: true
+    lifecycleCallbacks:
+        prePersist: [onPrePersist]
+        preUpdate: [onPreUpdate]

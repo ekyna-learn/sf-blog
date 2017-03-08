@@ -1,0 +1,35 @@
+{% extends "BlogBundle::base.html.twig" %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h1>Symfony Blog</h1>
+        </div>
+
+        {% for post in posts %}
+            <div>
+                <h2>
+                    <a href="javascript: void(0)">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p>
+                    <a href="javascript: void(0)">
+                        {{ post.category.title }}
+                    </a> -
+                    <em>Publié le {{ post.publishedAt|date('d/m/Y') }}</em>, par
+                    <strong>{{ post.author }}</strong>
+                </p>
+                <p>
+                    {{ post.content|summary }}
+                </p>
+                <p class="text-right">
+                    <a href="javascript: void(0)" class="btn btn-primary btn-sm">
+                        Lire la suite
+                    </a>
+                </p>
+            </div>
+            {% if not loop.last %}<hr>{% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,5 @@
+services:
+    blog.twig.blog_extension:
+        class: BlogBundle\Twig\BlogExtension
+        tags:
+            - { name: twig.extension }
