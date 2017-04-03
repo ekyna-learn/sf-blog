@@ -1,0 +1,17 @@
+{% extends "BlogBundle::base.html.twig" %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>{{ category.title }}</h1>
+    </div>
+
+    {{ category.description }}
+
+    <hr>
+
+    <h2>Articles de cette catégorie</h2>
+    {% include "BlogBundle:Blog:_post_list.html.twig" with {'posts': posts} %}
+
+</div>
+{% endblock %}

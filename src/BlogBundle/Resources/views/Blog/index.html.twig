@@ -6,30 +6,19 @@
             <h1>Symfony Blog</h1>
         </div>
 
-        {% for post in posts %}
-            <div>
-                <h2>
-                    <a href="javascript: void(0)">
-                        {{ post.title }}
-                    </a>
-                </h2>
-                <p>
-                    <a href="javascript: void(0)">
-                        {{ post.category.title }}
-                    </a> -
-                    <em>Publié le {{ post.publishedAt|date('d/m/Y') }}</em>, par
-                    <strong>{{ post.author }}</strong>
-                </p>
-                <p>
-                    {{ post.content|summary }}
-                </p>
-                <p class="text-right">
-                    <a href="javascript: void(0)" class="btn btn-primary btn-sm">
-                        Lire la suite
-                    </a>
-                </p>
-            </div>
-            {% if not loop.last %}<hr>{% endif %}
+        <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{{ path('blog_category', {'categorySlug': category.slug}) }}">
+                    {{ category.title }}
+                </a>
+            </li>
         {% endfor %}
+        </ul>
+
+        <hr>
+
+        <h2>Les 3 derniers articles</h2>
+        {% include "BlogBundle:Blog:_post_list.html.twig" with {'posts': posts} %}
     </div>
 {% endblock %}

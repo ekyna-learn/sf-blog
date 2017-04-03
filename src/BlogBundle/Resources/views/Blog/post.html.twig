@@ -1,0 +1,34 @@
+{% extends "BlogBundle::base.html.twig" %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>{{ post.title }}</h1>
+        <p>
+            <a href="{{ path('blog_category', {'categorySlug': post.category.slug}) }}">
+                Retour aux articles de la catégorie &laquo;{{ post.category.title }}&raquo;
+            </a>
+        </p>
+    </div>
+
+    <div>
+        {{ post.content|raw }}
+    </div>
+
+    <h2>Commentaires</h2>
+    {% for comment in comments %}
+        <hr>
+        <p>
+            Par <strong>{{ comment.pseudo }}</strong>, le {{ comment.createdAt|date('d/m/Y') }}
+        </p>
+        <p>
+            {{ comment.message|nl2br }}
+        </p>
+    {% endfor %}
+
+    <hr>
+    <h2>Ajouter un commentaire</h2>
+    {{ form(form) }}
+
+</div>
+{% endblock %}

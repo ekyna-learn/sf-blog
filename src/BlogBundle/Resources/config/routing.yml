@@ -1,3 +1,13 @@
 blog_index:
     path:     /
     defaults: { _controller: BlogBundle:Blog:index }
+
+blog_category:
+    path: /{categorySlug}
+    defaults:
+        _controller: BlogBundle:Blog:category
+
+blog_post:
+    path: /{categorySlug}/{postSlug}
+    defaults:
+        _controller: BlogBundle:Blog:post
