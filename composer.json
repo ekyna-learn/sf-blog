@@ -14,7 +14,7 @@
     "require": {
         "php": ">=5.3.9",
         "behat/transliterator": "1.1",
-        "doctrine/data-fixtures": "1.2",
+        "doctrine/data-fixtures": "^1.1",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/orm": "^2.4.8",
         "incenteev/composer-parameter-handler": "~2.0",
